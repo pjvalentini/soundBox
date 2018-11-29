@@ -10,7 +10,8 @@
       // set up an array for the circles
       var circles = []; 
       console.log(circles);
-// create a onKeyDown Event to generate a circle when we press a key.
+
+      // Create a onKeyDown Event to generate a circle when we press a key.
 	   function onKeyDown(event) {
            console.log(event);
         
@@ -29,7 +30,7 @@
          
          // we need a new var here as we are only passing in the last part of the new Path...so only the string "yellow".
          // is being passed into the array as opposed to the actual circle.
-           var newCircle = new Path.Circle(point, 10)
+           var newCircle = new Path.Circle(point, 300)
            newCircle.fillColor = 'Yellow';
            circles.push(newCircle);
          // you cannot push into array like this.
@@ -39,20 +40,23 @@
        }  
 
        // create a new circle
-       var circleAnimate = new Path.Circle(new Point(300, 300), 100);
-       circleAnimate.fillColor = "red"; 
+      //  var circleAnimate = new Path.Circle(new Point(300, 300), 100);
+      //  circleAnimate.fillColor = "red"; 
 
-      // Anytime there is a new frame we are adding 1 to the hue of the circleAnimate.
+      // Anytime there is a new frame we are adding 4 to the hue of the circleAnimate.
       function onFrame() {
          // on every frame we loop through the circles array. and we add 1 ro each cirlces hue.
          for(var i = 0; i < circles.length; i++) {
             console.log(circles[i]);
-            circles[i].fillColor.hue += 1;
+            circles[i].fillColor.hue += 4;
+            circles[i].scale(.8); // sets the timing on the radius size animation
          }
-         circleAnimate.fillColor.hue += 1;
-         // here we set a sclae method to change the radius of the circle.
-         // circleAnimate.scale(.85);
+         // circleAnimate.fillColor.hue += 1;
       }
+      // TO DO STILL
+      // we need to make sure to remove the corcle from the array once it dissapears.(Optimization)
+      // we need to now set each key to have a unique color.
+      // add sound to the key presses do that each key has a unique sound.
 
     </script>
 </head>
