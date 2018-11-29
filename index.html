@@ -5,8 +5,12 @@
     <script type="text/javascript" src="javascript/paper-full.js" ></script>
     <link rel="stylesheet" href="css/styles.css">
     <script type="text/paperscript" canvas="myCanvas">
-        // create a onKeyDown Event to generate a circle when we press a key.
-        // this is a paper.js function from the docs.
+      
+      // See paper.js docs @ paperjs.org
+      // set up an array for the circles
+      var circles = []; 
+      console.log(circles);
+// create a onKeyDown Event to generate a circle when we press a key.
 	   function onKeyDown(event) {
            console.log(event);
         
@@ -18,9 +22,18 @@
         
         // multiply maximumPoint to randomPoint.    
            var point = maximumPoint * randomPoint;
-           console.log(maximumPoint)
-	        // When a key is pressed generate this circle.
-	        new Path.Circle(point, 10).fillColor = 'Yellow';
+           console.log(maximumPoint);
+
+         // You cannot push into array like this, to o many methods chained along.
+	      // circles.push(new Path.Circle(point, 10).fillColor = 'Yellow');
+         
+         // we need a new var here as we are only passing in the last part of the new Path...so only the string "yellow".
+         // is being passed into the array as opposed to the actual circle.
+           var newCircle = new Path.Circle(point, 10)
+           newCircle.fillColor = 'Yellow';
+           circles.push(newCircle);
+         // you cannot push into array like this.
+	      //   circles.push(new Path.Circle(point, 10).fillColor = 'Yellow');
             console.log(view.size.width);
             console.log(view.size.height);
        }  
@@ -31,12 +44,14 @@
 
       // Anytime there is a new frame we are adding 1 to the hue of the circleAnimate.
       function onFrame() {
+         // on every frame we loop through the circles array. and we add 1 ro each cirlces hue.
          for(var i = 0; i < circles.length; i++) {
+            console.log(circles[i]);
             circles[i].fillColor.hue += 1;
          }
          circleAnimate.fillColor.hue += 1;
          // here we set a sclae method to change the radius of the circle.
-         circleAnimate.scale(.85);
+         // circleAnimate.scale(.85);
       }
 
     </script>
