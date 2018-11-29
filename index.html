@@ -12,13 +12,15 @@
         
         // sets up a point depending on the size of the viewport
            var maximumPoint = new Point(view.size.width, view.size.height);
+        
         // sets a random point for the circle. 
            var randomPoint = Point.random();
+        
         // multiply maximumPoint to randomPoint.    
            var point = maximumPoint * randomPoint;
            console.log(maximumPoint)
-	        // When a key is pressed, 
-	        new Path.Circle(point, 50).fillColor = 'Yellow';
+	        // When a key is pressed generate this circle.
+	        new Path.Circle(point, 10).fillColor = 'Yellow';
             console.log(view.size.width);
             console.log(view.size.height);
        }  
