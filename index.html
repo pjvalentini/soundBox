@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
     <title>SoundBox</title>
-    <script type="text/javascript" src="javascript/paper-full.js" ></script>
+    <script type="text/javascript" src="javascript/paper-full.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.28/howler.js"></script>
     <link rel="stylesheet" href="css/styles.css">
-    <script type="text/paperscript" canvas="myCanvas">
+    <script type="text/paperscript" canvas="myCanvas"> 
       
+      // basic setuo for howler.js
+      var sound = new Howl({
+         urls: ['sounds/bubbles.mp3']
+      });
+
       // See paper.js docs @ paperjs.org
       // set up an array for the circles
       var circles = []; 
@@ -14,6 +20,8 @@
       // Create a onKeyDown Event to generate a circle when we press a key.
 	   function onKeyDown(event) {
            console.log(event);
+           // play sound onKeypress.
+           sound.play();
         
         // sets up a point depending on the size of the viewport
            var maximumPoint = new Point(view.size.width, view.size.height);
@@ -54,7 +62,7 @@
          // circleAnimate.fillColor.hue += 1;
       }
       // TO DO STILL
-      // we need to make sure to remove the corcle from the array once it dissapears.(Optimization)
+      // we need to make sure to remove the circle from the array once it dissapears.(Optimization)
       // we need to now set each key to have a unique color.
       // add sound to the key presses do that each key has a unique sound.
 
