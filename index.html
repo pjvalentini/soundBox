@@ -7,10 +7,164 @@
     <link rel="stylesheet" href="css/styles.css">
     <script type="text/paperscript" canvas="myCanvas"> 
       
-      // basic setuo for howler.js
-      var sound = new Howl({
-         urls: ['sounds/bubbles.mp3']
-      });
+      var keyData = {
+         q: {
+		      sound: new Howl({
+  		         urls: ['sounds/bubbles.mp3']
+		       }),
+		      color: '#1abc9c'
+	         },
+         w: {
+            sound: new Howl({
+               urls: ['sounds/clay.mp3']
+            }),
+            color: '#2ecc71'
+         },
+         e: {
+            sound: new Howl({
+               urls: ['sounds/confetti.mp3']
+            }),
+            color: '#3498db'
+         },
+         r: {
+            sound: new Howl({
+               urls: ['sounds/corona.mp3']
+            }),
+            color: '#9b59b6'
+         },
+            t: {
+            sound: new Howl({
+               urls: ['sounds/dotted-spiral.mp3']
+            }),
+            color: '#34495e'
+         },
+         y: {
+            sound: new Howl({
+               urls: ['sounds/flash-1.mp3']
+            }),
+            color: '#16a085'
+         },
+         u: {
+            sound: new Howl({
+               urls: ['sounds/flash-2.mp3']
+            }),
+            color: '#27ae60'
+         },
+         i: {
+            sound: new Howl({
+               urls: ['sounds/flash-3.mp3']
+            }),
+            color: '#2980b9'
+         },
+         o: {
+            sound: new Howl({
+               urls: ['sounds/glimmer.mp3']
+            }),
+            color: '#8e44ad'
+         },
+         p: {
+            sound: new Howl({
+               urls: ['sounds/moon.mp3']
+            }),
+            color: '#2c3e50'
+         },
+         a: {
+            sound: new Howl({
+               urls: ['sounds/pinwheel.mp3']
+            }),
+            color: '#f1c40f'
+         },
+         s: {
+            sound: new Howl({
+               urls: ['sounds/piston-1.mp3']
+            }),
+            color: '#e67e22'
+         },
+            d: {
+            sound: new Howl({
+               urls: ['sounds/piston-2.mp3']
+            }),
+            color: '#e74c3c'
+         },
+         f: {
+            sound: new Howl({
+               urls: ['sounds/prism-1.mp3']
+            }),
+            color: '#95a5a6'
+         },
+         g: {
+            sound: new Howl({
+               urls: ['sounds/prism-2.mp3']
+            }),
+            color: '#f39c12'
+         },
+         h: {
+            sound: new Howl({
+               urls: ['sounds/prism-3.mp3']
+            }),
+            color: '#d35400'
+         },
+         j: {
+            sound: new Howl({
+               urls: ['sounds/splits.mp3']
+            }),
+            color: '#1abc9c'
+         },
+         k: {
+            sound: new Howl({
+               urls: ['sounds/squiggle.mp3']
+            }),
+            color: '#2ecc71'
+         },
+         l: {
+            sound: new Howl({
+               urls: ['sounds/strike.mp3']
+            }),
+            color: '#3498db'
+         },
+         z: {
+            sound: new Howl({
+               urls: ['sounds/suspension.mp3']
+            }),
+            color: '#9b59b6'
+         },
+         x: {
+            sound: new Howl({
+               urls: ['sounds/timer.mp3']
+            }),
+            color: '#34495e'
+         },
+         c: {
+            sound: new Howl({
+               urls: ['sounds/ufo.mp3']
+            }),
+            color: '#16a085'
+         },
+         v: {
+            sound: new Howl({
+               urls: ['sounds/veil.mp3']
+            }),
+            color: '#27ae60'
+         },
+         b: {
+            sound: new Howl({
+               urls: ['sounds/wipe.mp3']
+            }),
+            color: '#2980b9'
+         },
+         n: {
+            sound: new Howl({
+               urls: ['sounds/zig-zag.mp3']
+            }),
+            color: '#8e44ad'
+         },
+         m: {
+            sound: new Howl({
+               urls: ['sounds/moon.mp3']
+            }),
+            color: '#2c3e50'
+         }
+      }
 
       // See paper.js docs @ paperjs.org
       // set up an array for the circles
@@ -20,31 +174,37 @@
       // Create a onKeyDown Event to generate a circle when we press a key.
 	   function onKeyDown(event) {
            console.log(event);
-           // play sound onKeypress.
-           sound.play();
+           if(keyData[event.key]) {
+         // sets up a point depending on the size of the viewport
+             var maximumPoint = new Point(view.size.width, view.size.height);
         
-        // sets up a point depending on the size of the viewport
-           var maximumPoint = new Point(view.size.width, view.size.height);
+            // sets a random point for the circle. 
+            var randomPoint = Point.random();
         
-        // sets a random point for the circle. 
-           var randomPoint = Point.random();
-        
-        // multiply maximumPoint to randomPoint.    
-           var point = maximumPoint * randomPoint;
-           console.log(maximumPoint);
+            // multiply maximumPoint to randomPoint.    
+            var point = maximumPoint * randomPoint;
+            console.log(maximumPoint);
 
-         // You cannot push into array like this, to o many methods chained along.
-	      // circles.push(new Path.Circle(point, 10).fillColor = 'Yellow');
+            // You cannot push into array like this, to o many methods chained along.
+	         // circles.push(new Path.Circle(point, 10).fillColor = 'Yellow');
          
-         // we need a new var here as we are only passing in the last part of the new Path...so only the string "yellow".
-         // is being passed into the array as opposed to the actual circle.
-           var newCircle = new Path.Circle(point, 300)
-           newCircle.fillColor = 'Yellow';
-           circles.push(newCircle);
-         // you cannot push into array like this.
-	      //   circles.push(new Path.Circle(point, 10).fillColor = 'Yellow');
+            // we need a new var here as we are only passing in the last part of the new Path...so only the string "yellow".
+            // is being passed into the array as opposed to the actual circle.
+            var newCircle = new Path.Circle(point, 300)
+            
+            // set newCircle.fillColor to the keyData Keys when the event is tiggered.
+            newCircle.fillColor = keyData[event.key].color;
+
+            // link the sounds to the event.key and calling the play function on sound.
+            keyData[event.key].sound.play();
+            circles.push(newCircle);
+            // you cannot push into array like this.
+	         // circles.push(new Path.Circle(point, 10).fillColor = 'Yellow');
             console.log(view.size.width);
             console.log(view.size.height);
+           }
+
+        
        }  
 
        // create a new circle
