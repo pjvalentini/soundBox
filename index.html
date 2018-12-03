@@ -6,7 +6,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.28/howler.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <script type="text/paperscript" canvas="myCanvas"> 
-      
+      // All key data
       var keyData = {
          q: {
 		      sound: new Howl({
@@ -218,14 +218,19 @@
             console.log(circles[i]);
             circles[i].fillColor.hue += 4;
             circles[i].scale(.8); // sets the timing on the radius size animation
-         }
-         // circleAnimate.fillColor.hue += 1;
-      }
-      // TO DO STILL
-      // we need to make sure to remove the circle from the array once it dissapears.(Optimization)
-      // we need to now set each key to have a unique color.
-      // add sound to the key presses do that each key has a unique sound.
 
+            // removing circles from the canvas after a key press
+            if(circles[i].area < 1) {
+               circles[i].remove(); // remove the circle from the canvas
+               circles.splice(i, 1); // remove the circle from the array
+               console.log(circles); 
+
+            }
+         }
+         // NOTE to get rid of cross origin errors
+         // run => python3 -m http.server
+         // in the terminal and go to localhost 8000
+      }
     </script>
 </head>
 <body>
