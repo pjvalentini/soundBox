@@ -10,7 +10,7 @@ Paper.js is imported as a file from the site, whereas I am using a CDN for the u
 You may need to configure your code editor to be able to read paperscript as Paper.js uses this.  
 Initially my VSCode text editor was not syntax hightlighting the paperscript code I wrote so I had to modify my VSCode configuration.
 
-Please for to this link to see how to configure your editor for paperscript syntax highlighting on VSCode.
+Please go to this link to see how to configure your editor for paperscript syntax highlighting on VSCode.
 https://stackoverflow.com/questions/44256968/visual-studio-code-paperscript
 
 NOTE: Sublime 3 has a package for this so its much easier to fix this issue.
