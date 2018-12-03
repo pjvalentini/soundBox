@@ -7,7 +7,7 @@ This app was built to learn how to work with both libraries and to learn to inco
 
 Paper.js is imported as a file from the site, whereas I am using a CDN for the use of Howler.js
 
-You may need to cofigure your code editor to be able to read paperscript as Paper.js uses this.  
+You may need to configure your code editor to be able to read paperscript as Paper.js uses this.  
 Initially my VSCode text editor was not syntax hightlighting the paperscript code I wrote so I had to modify my VSCode configuration.
 
 Please for to this link to see how to configure your editor for paperscript syntax highlighting on VSCode.
